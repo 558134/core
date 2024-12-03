@@ -1,0 +1,11 @@
+{
+  "$schema": "https://typedoc.org/schema.json",
+  "disableSources": true,
+  "entryPointStrategy": "packages",
+  "entryPoints": ["packages/accounts-controller"],
+  "out": "docs",
+  "tsconfig": "./tsconfig.build.json",
+  "compilerOptions": {
+    "skipLibCheck": true
+  }
+}

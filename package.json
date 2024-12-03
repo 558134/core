@@ -14,8 +14,9 @@
   ],
   "scripts": {
     "build": "yarn ts-bridge --project tsconfig.build.json --verbose",
-    "build:clean": "rimraf dist '**/*.tsbuildinfo' && yarn build",
-    "build:docs": "yarn workspaces foreach --all --no-private --parallel --interlaced --verbose run build:docs",
+    "build:docs": "typedoc",
+    "build:docs-all": "typedoc --workspaces --if-present",
+    "build:only-clean": "yarn workspaces foreach --all --no-private --parallel --interlaced exec rm -rf dist",
     "build:types": "tsc --build tsconfig.build.json --verbose",
     "changelog:update": "yarn workspaces foreach --all --no-private --parallel --interlaced --verbose run changelog:update",
     "changelog:validate": "yarn workspaces foreach --all --no-private --parallel --interlaced --verbose run changelog:validate",
@@ -93,6 +94,8 @@
     "semver": "^7.6.3",
     "simple-git-hooks": "^2.8.0",
     "ts-node": "^10.9.1",
+    "typedoc": "^0.27.2",
+    "typedoc-plugin-missing-exports": "^3.1.0",
     "typescript": "~5.2.2",
     "yargs": "^17.7.2"
   },
