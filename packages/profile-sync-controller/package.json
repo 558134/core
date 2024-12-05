@@ -120,6 +120,7 @@
     "@metamask/keyring-internal-api": "^1.0.0",
     "@metamask/providers": "^18.1.1",
     "@metamask/snaps-controllers": "^9.10.0",
+    "@ts-bridge/cli": "^0.6.1",
     "@types/jest": "^27.4.1",
     "deepmerge": "^4.2.2",
     "ethers": "^6.12.0",

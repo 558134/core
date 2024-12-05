@@ -84,6 +84,7 @@
     "@metamask/network-controller": "^22.1.1",
     "@metamask/preferences-controller": "^15.0.1",
     "@metamask/providers": "^18.1.1",
+    "@ts-bridge/cli": "^0.6.1",
     "@types/jest": "^27.4.1",
     "@types/lodash": "^4.14.191",
     "@types/node": "^16.18.54",

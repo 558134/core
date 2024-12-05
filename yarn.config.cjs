@@ -173,6 +173,12 @@ module.exports = defineConfig({
         );
       }
 
+      expectWorkspaceField(
+        workspace,
+        'devDependencies["@ts-bridge/cli"]',
+        '^0.6.1',
+      );
+
       if (isChildWorkspace) {
         // The list of files included in all non-root packages must only include
         // files generated during the build process.

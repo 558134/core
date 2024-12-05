@@ -114,6 +114,7 @@
     "@metamask/auto-changelog": "^3.4.4",
     "@metamask/keyring-controller": "^19.0.2",
     "@metamask/profile-sync-controller": "^3.1.1",
+    "@ts-bridge/cli": "^0.6.1",
     "@types/jest": "^27.4.1",
     "@types/readable-stream": "^2.3.0",
     "contentful": "^10.15.0",

@@ -65,6 +65,7 @@
     "@metamask/keyring-controller": "^19.0.2",
     "@metamask/providers": "^18.1.1",
     "@metamask/snaps-controllers": "^9.10.0",
+    "@ts-bridge/cli": "^0.6.1",
     "@types/jest": "^27.4.1",
     "@types/readable-stream": "^2.3.0",
     "jest": "^27.5.1",
