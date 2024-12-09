@@ -3,5 +3,5 @@
   "compilerOptions": {
     "baseUrl": "./"
   },
-  "include": ["../../types", "./src"]
+  "include": ["../../tests", "../../types", "./src"]
 }
