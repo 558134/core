@@ -34,9 +34,18 @@ export const DEFAULT_CIRCUIT_BREAK_DURATION = 30 * 60 * 1000;
 export const DEFAULT_DEGRADED_THRESHOLD = 5_000;
 
 /**
- * Constructs a policy that will retry an action using ever increasing delays
- * until it succeeds, pausing for a while if too many consecutive failures are
- * detected.
+ * Constructs an object which will attempt to execute a function, retrying with
+ * ever increasing delays until it succeeds and pausing for a designated period
+ * if too many consecutive failures are detected. This particular behavior is
+ * primarily designed for services that wrap API calls so as not to make
+ * needless HTTP requests when the API is down and to be able to recover when
+ * the API comes back up. In addition, this function exposes hooks to respond to
+ * certain events, one of which can be used to detect when an HTTP request is
+ * performing slowly.
+ *
+ * Internally, the executor object makes use of the retry and circuit breaker
+ * policies from the [Cockatiel](https://www.npmjs.com/package/cockatiel)
+ * library; see there for more.
  *
  * @param options - The options to this function.
  * @param options.maxRetries - The maximum number of times that a failing action
@@ -50,14 +59,14 @@ export const DEFAULT_DEGRADED_THRESHOLD = 5_000;
  * governs when an action is regarded as degraded (affecting when `onDegraded`
  * is called). Defaults to 5 seconds.
  * @param options.onBreak - A function which is called when the action fails too
- * many times in a row. (Note that this will never be called with the default
- * values of `maxRetries` and `maxConsecutiveFailures`.)
+ * many times in a row.
  * @param options.onDegraded - A function which is called when the action
  * succeeds before `maxConsecutiveFailures` is reached, but takes more time
  * than the `degradedThreshold` to run.
  * @returns A Cockatiel policy object that can be used to run an arbitrary
  * action (a function).
  * @example
+ * To use the policy, call `execute` on it and pass a function:
  * ``` ts
  * const policy = createServicePolicy({
  *   maxRetries: 3,
@@ -72,9 +81,25 @@ export const DEFAULT_DEGRADED_THRESHOLD = 5_000;
  *   }
  * });
  *
- * policy.execute(async () => {
- *   await fetch('https://some/url');
+ * await policy.execute(async () => {
+ *   const response = await fetch('https://some/url');
+ *   return await response.json();
  * });
+ * ```
+ * You may wish to store `policy` in a single place and reuse it each time you
+ * want to execute your action. For instance:
+ * ``` ts
+ * class Service {
+ *   constructor() {
+ *     this.#policy = createServicePolicy();
+ *   }
+ *
+ *   async fetch() {
+ *     this.#policy.execute(async () => {
+ *       // ...
+ *     });
+ *   }
+ * }
  * ```
  */
 export function createServicePolicy({
