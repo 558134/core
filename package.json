@@ -14,7 +14,7 @@
   ],
   "scripts": {
     "build": "yarn ts-bridge --project tsconfig.build.json --verbose",
-    "build:docs": "typedoc",
+    "build:docs": "typedoc --tsconfig tsconfig.build.json --logLevel Verbose",
     "build:docs-all": "typedoc --workspaces --if-present",
     "build:only-clean": "yarn workspaces foreach --all --no-private --parallel --interlaced exec rm -rf dist",
     "build:types": "tsc --build tsconfig.build.json --verbose",

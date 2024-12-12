@@ -2,5 +2,5 @@
   "$schema": "https://typedoc.org/schema.json",
   "out": "api-docs",
   "entryPointStrategy": "packages",
-  "entryPoints": ["packages/ens-controller"]
+  "entryPoints": ["."]
 }
