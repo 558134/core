@@ -114,7 +114,7 @@ module.exports = defineConfig({
         );
 
         // All non-root packages must have the same "build:docs" script.
-        expectWorkspaceField(workspace, 'scripts.build:docs', 'typedoc');
+        expectWorkspaceField(workspace, 'scripts.build:docs', null);
 
         if (isPrivate) {
           // All private, non-root packages must not have a "publish:preview"
@@ -178,6 +178,8 @@ module.exports = defineConfig({
         'devDependencies["@ts-bridge/cli"]',
         '^0.6.1',
       );
+
+      expectWorkspaceField(workspace, 'devDependencies["typedoc"]', null);
 
       if (isChildWorkspace) {
         // The list of files included in all non-root packages must only include
