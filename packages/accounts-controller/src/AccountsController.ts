@@ -1,7 +1,7 @@
 import type {
   ControllerGetStateAction,
   ControllerStateChangeEvent,
-  RestrictedControllerMessenger,
+  RestrictedMessenger,
 } from '@metamask/base-controller';
 import { BaseController } from '@metamask/base-controller';
 import { SnapKeyring } from '@metamask/eth-snap-keyring';
@@ -170,7 +170,7 @@ export type AccountsControllerEvents =
   | AccountsControllerAccountRemovedEvent
   | AccountsControllerAccountRenamedEvent;
 
-export type AccountsControllerMessenger = RestrictedControllerMessenger<
+export type AccountsMessenger = RestrictedMessenger<
   typeof controllerName,
   AccountsControllerActions | AllowedActions,
   AccountsControllerEvents | AllowedEvents,
@@ -223,7 +223,7 @@ export const EMPTY_ACCOUNT = {
 export class AccountsController extends BaseController<
   typeof controllerName,
   AccountsControllerState,
-  AccountsControllerMessenger
+  AccountsMessenger
 > {
   /**
    * Constructor for AccountsController.
@@ -236,7 +236,7 @@ export class AccountsController extends BaseController<
     messenger,
     state,
   }: {
-    messenger: AccountsControllerMessenger;
+    messenger: AccountsMessenger;
     state: AccountsControllerState;
   }) {
     super({
