@@ -11,6 +11,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Bump `@metamask/base-controller` from `^7.0.0` to `^7.1.0` ([#5079](https://github.com/MetaMask/core/pull/5079))
 
+### Removed
+
+- **BREAKING:** Remove `NftController` property `openSeaApiKey` and method `setApiKey` ([#5088](https://github.com/MetaMask/core/pull/5088))
+  - This key was not actively used. No functional changes.
+
 ## [45.1.2]
 
 ### Changed

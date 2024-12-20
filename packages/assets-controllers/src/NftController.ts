@@ -284,11 +284,6 @@ export class NftController extends BaseController<
 > {
   readonly #mutex = new Mutex();
 
-  /**
-   * Optional API key to use with opensea
-   */
-  openSeaApiKey?: string;
-
   #selectedAccountId: string;
 
   #chainId: Hex;
@@ -1372,15 +1367,6 @@ export class NftController extends BaseController<
       source: Source.Dapp,
       networkClientId,
     });
-  }
-
-  /**
-   * Sets an OpenSea API key to retrieve NFT information.
-   *
-   * @param openSeaApiKey - OpenSea API key.
-   */
-  setApiKey(openSeaApiKey: string) {
-    this.openSeaApiKey = openSeaApiKey;
   }
 
   /**
