@@ -1,4 +1,4 @@
-name: Main
+[![Main](https://github.com/MetaMask/core/actions/workflows/main.yml/badge.svg)](https://github.com/MetaMask/core/actions/workflows/main.yml)
 
 on:
   push:
